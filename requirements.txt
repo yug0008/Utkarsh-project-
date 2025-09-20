@@ -1,0 +1,16 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+python-multipart
+python-jose[cryptography]
+passlib
+bcrypt
+alembic
+python-dotenv
+opencv-python-headless
+mediapipe
+numpy
+scikit-learn
+pillow
+gunicorn
