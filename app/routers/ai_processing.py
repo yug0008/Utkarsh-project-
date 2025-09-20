@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 import shutil
 import os
 from datetime import datetime
+from app.services.cloud_storage import save_upload_file
 
 from app.database import get_db
 from app.services.auth import get_current_active_user
@@ -74,3 +75,4 @@ async def process_video(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Video processing failed: {str(e)}"
         )
+
