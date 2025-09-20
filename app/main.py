@@ -1,9 +1,7 @@
-
+# app/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-
-from app.database import engine, Base
-from app.routers import auth, athletes, coaches, admin, gamification, ai_processing
+import os
 
 # Create database tables
 Base.metadata.create_all(bind=engine)
@@ -14,10 +12,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# Get frontend URL from environment or use default
+frontend_url = os.environ.get("FRONTEND_URL", "http://localhost:3000")
+
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In production, restrict to specific domains
+    allow_origins=[frontend_url, "http://localhost:3000"],  # Frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
